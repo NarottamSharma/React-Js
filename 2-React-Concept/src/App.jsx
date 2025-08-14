@@ -6,7 +6,23 @@ import Main from "./components/Main";
 import Welcome from "./components/Welcome";
 
 const App = () => {
-    const num = [1, 2, 3, 4, 5, 6];
+    const object  = [
+        {
+            name:"Narottam1",
+            age:22,
+            place:"IND"
+        },
+        {
+            name:"Narottam2",
+            age:24,
+            place:"RUS"
+        },
+        {
+            name:"Narottam3",
+            age:26,
+            place:"USA"
+        },
+    ];
     return (
         <div>
             {/* <Header />
@@ -16,13 +32,13 @@ const App = () => {
             <Greet />
             <ProductInfo /> */}
             <main>
-                {num.map((singleNum) => {
-                    return (
-                        <ul key={singleNum}>
-                            <li>{singleNum}</li>
-                        </ul>
-                    );
-                })}
+                {object.map(({name,age,place}) => (
+                    <div key={name}>
+                        <h3>{name}</h3>
+                        <p>Age: {age}</p>
+                        <p>Place: {place}</p>
+                    </div>
+                ))}
             </main>
         </div>
     );
