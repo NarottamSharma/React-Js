@@ -6,23 +6,6 @@ import Main from "./components/Main";
 import Welcome from "./components/Welcome";
 
 const App = () => {
-    const object  = [
-        {
-            name:"Narottam1",
-            age:22,
-            place:"IND"
-        },
-        {
-            name:"Narottam2",
-            age:24,
-            place:"RUS"
-        },
-        {
-            name:"Narottam3",
-            age:26,
-            place:"USA"
-        },
-    ];
     return (
         <div>
             {/* <Header />
