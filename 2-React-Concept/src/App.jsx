@@ -14,6 +14,21 @@ import Password from "./components/conditionalRendering/Password";
 import Cart from "./components/Cart";
 import Weather from "./components/exercise2/Weather";
 
+const Button=()=>{
+    const handleClick=()=>console.log("You Clicked Me!");
+    return <button onClick={handleClick} >Click</button>
+}
+
+const onMouseMoveHandler= () =>{
+    alert('Mouse Move Event Fired')
+}
+
+const Move=()=>{
+    return <p onMouseMove={onMouseMoveHandler}>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus provident quia maxime dicta ex tempore reprehenderit numquam sequi rem.
+    </p>
+}
+
 const App = () => {
     return (
         <div>
@@ -37,8 +52,10 @@ const App = () => {
             </Cards>
             <Password isValid={true} />
             <Cart />
-            <ProductInfo /> */}
-            <Weather temperature={40} />
+            <ProductInfo /> 
+            <Weather temperature={10} /> */}
+            <Button/>
+            <Move />
         </div>
     );
 };
