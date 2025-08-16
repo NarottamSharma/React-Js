@@ -3,7 +3,11 @@ import { ProductInfo } from "./components/exercise/ProductInfo";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import PropLearning from "./components/propsLearning/PropsLearm";
+import { UserList } from "./components/UserList";
 import Welcome from "./components/Welcome";
+import Person from "./components/propsLearning/Person";
+import Product from "./components/propsLearning/Product";
 
 const App = () => {
     return (
@@ -13,16 +17,12 @@ const App = () => {
             <Footer />
             <Welcome/>
             <Greet />
+            <ProductInfo />
+            <UserList />
+            <PropLearning/>
             <ProductInfo /> */}
-            <main>
-                {object.map(({name,age,place}) => (
-                    <div key={name}>
-                        <h3>{name}</h3>
-                        <p>Age: {age}</p>
-                        <p>Place: {place}</p>
-                    </div>
-                ))}
-            </main>
+            <Person name="Narottam" age={22} />
+            <Product name="Iphone" price={1499} />
         </div>
     );
 };
