@@ -12,6 +12,7 @@ import Cards from "./components/propsLearning/Cards";
 import Condition from "./components/conditionalRendering/Password";
 import Password from "./components/conditionalRendering/Password";
 import Cart from "./components/Cart";
+import Weather from "./components/exercise2/Weather";
 
 const App = () => {
     return (
@@ -35,8 +36,9 @@ const App = () => {
                 <p>This is content of for Card-2</p>
             </Cards>
             <Password isValid={true} />
-            <ProductInfo /> */}
             <Cart />
+            <ProductInfo /> */}
+            <Weather temperature={40} />
         </div>
     );
 };
