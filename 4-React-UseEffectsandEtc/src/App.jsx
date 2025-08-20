@@ -4,6 +4,9 @@ import FetchingDatausingUseEffects from "./Components/FetchingDatausingUseEffect
 import BasicEffects from "./Components/BasicEffects";
 import CounterEffect from "./Components/CounterEffect";
 import ComponentA from "./PropDrilling/ComponentA";
+import { UserProvider } from "./useContextAssign/UserContext";
+import UserProfile from "./useContextAssign/UserProfile";
+import UpdateUser from "./useContextAssign/UpdateUser";
 export const Data = createContext();
 export const Data1 = createContext();
 function App() {
@@ -27,11 +30,17 @@ function App() {
       </Data.Provider> */}
 
       {/* Multiple data providing by use Context */}
-      <Data.Provider value={name}>
+      {/* <Data.Provider value={name}>
         <Data1.Provider value={age}>
           <ComponentA/>
         </Data1.Provider>
-      </Data.Provider>
+      </Data.Provider> */}
+
+      {/* <UserProvider>
+        <UserProfile/>
+        <UpdateUser/>
+      </UserProvider> */}
+      
     </div>
   );
 }
