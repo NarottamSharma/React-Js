@@ -7,6 +7,7 @@ import ComponentA from "./PropDrilling/ComponentA";
 import { UserProvider } from "./useContextAssign/UserContext";
 import UserProfile from "./useContextAssign/UserProfile";
 import UpdateUser from "./useContextAssign/UpdateUser";
+import Ex1 from "./UseReducer/Ex1";
 export const Data = createContext();
 export const Data1 = createContext();
 function App() {
@@ -40,7 +41,8 @@ function App() {
         <UserProfile/>
         <UpdateUser/>
       </UserProvider> */}
-      
+
+      <Ex1/>
     </div>
   );
 }
