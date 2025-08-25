@@ -9,6 +9,9 @@ import UserProfile from "./useContextAssign/UserProfile";
 import UpdateUser from "./useContextAssign/UpdateUser";
 import Ex1 from "./UseReducer/Ex1";
 import Counter from "./UseReducer/Counter";
+import A1 from "./UseRef/A1"
+import FocusInput from "./UseRef/FocusInput";
+import Timer from "./UseRef/Timer";
 export const Data = createContext();
 export const Data1 = createContext();
 function App() {
@@ -44,7 +47,12 @@ function App() {
       </UserProvider> */}
 
       {/* <Ex1/> */}
-      <Counter/>
+      {/* <Counter/> */}
+
+      {/* UseRef Learning */}
+      {/* <A1/>  */}
+      {/* <FocusInput/> */}
+      <Timer/>
     </div>
   );
 }
