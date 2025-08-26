@@ -12,6 +12,7 @@ import Counter from "./UseReducer/Counter";
 import A1 from "./UseRef/A1"
 import FocusInput from "./UseRef/FocusInput";
 import Timer from "./UseRef/Timer";
+import useFetch from "./custom Hook/useFetch";
 export const Data = createContext();
 export const Data1 = createContext();
 function App() {
@@ -19,6 +20,10 @@ function App() {
   // sending name data to component c
   const name = "Narottam";
   const age = 22;
+  
+  // Custom Hook
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+  
   return (
     <div>
       {/* <UseEffects /> */}
@@ -50,9 +55,14 @@ function App() {
       {/* <Counter/> */}
 
       {/* UseRef Learning */}
-      {/* <A1/>  */}
-      {/* <FocusInput/> */}
-      <Timer/>
+      {/* Custom Hook  */}
+      {data && data.map((item)=>{
+        return <p key={item.id}>{item.title}</p>
+      })}
+      const [data]= useFetch("https://jsonplaceholder.typicode.com/todos")
+      {data && data.map((item)=>{
+        return <p key={item.id}>{item.title}</p>
+      })}
     </div>
   );
 }
