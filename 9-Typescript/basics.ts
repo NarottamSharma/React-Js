@@ -122,21 +122,33 @@ console.log(printUser());
 // 5. Objects can have type annotations for their properties
 // ========================================
 
-//  type aliases
+// ========================================
+// TYPE ALIASES
+// ========================================
+// Type aliases allow you to create custom names for types
+// This makes code more readable and reusable
+// Syntax: type AliasName = ExistingType
 
-// type myString = string;
+// type myString = string; // Simple alias example
+
+// Custom object type with optional property
 type Person = {
-  name: string;
-  age?: number;
+  name: string;    // Required property
+  age?: number;    // Optional property (? makes it optional)
 };
 
 function printPerson(person: Person) {
   console.log(`Name: ${person.name} and age is ${person.age}`);
 }
-const myPerson: Person = { name: "Ns" };
+const myPerson: Person = { name: "Ns" }; // age is optional, so we can omit it
 printPerson(myPerson);
 
-// intersection
+// ========================================
+// INTERSECTION TYPES (&)
+// ========================================
+// Intersection combines multiple types into one
+// The result has ALL properties from ALL intersected types
+// Syntax: Type1 & Type2 & Type3
 
 type UserInfo = {
   fname: string;
@@ -149,47 +161,95 @@ type AccountDetails = {
   password: string;
 };
 
+// User type has ALL properties from both UserInfo AND AccountDetails
 type User = UserInfo & AccountDetails;
 
-const narottam:User={
-  fname:'Narottam Sharma',
-  lname:"Sharma",
-  age:22,
-  email:"ban@gmail.com",
-  password:"aksnflkswan"
+const narottam: User = {
+  // Must have ALL properties from both types
+  fname: 'Narottam Sharma',
+  lname: "Sharma", 
+  age: 22,
+  email: "ban@gmail.com",
+  password: "aksnflkswan"
 }
-console.log(`Name:${narottam.lname}`);
+console.log(`Name: ${narottam.lname}`);
 
-// Unions
-let password: string | number = 22;
+// ========================================
+// UNION TYPES (|)
+// ========================================
+// Union allows a value to be one of several types
+// The value can be ANY ONE of the specified types
+// Syntax: Type1 | Type2 | Type3
+
+let password: string | number = 22; // Can be either string OR number
 let User2: UserInfo | AccountDetails = {
+  // Can be either UserInfo OR AccountDetails (not both)
   fname: 'Narottam',
   lname: 'Sharma',
   age: 25
+  // This object matches UserInfo structure
 };
 console.log(`Password: ${password}`);
 console.log(`User2: ${User2.fname} ${User2.lname}`);
 
-// Literal types
+// ========================================
+// LITERAL TYPES
+// ========================================
+// Literal types restrict values to specific literals
+// More restrictive than primitive types
 
-let num:1|3|4|5;
-num = 3;
-num = 1;
+// Numeric literal type - only accepts specific numbers
+let num: 1 | 3 | 4 | 5; // Only these exact numbers are allowed
+num = 3; // ✅ Valid
+num = 1; // ✅ Valid
+// num = 2; // ❌ Error - 2 is not allowed
 console.log(num);
 
-let themeColor : 'red'|'yellow'|'green';
-themeColor = 'yellow'
+// String literal type - only accepts specific strings
+let themeColor: 'red' | 'yellow' | 'green'; // Only these exact strings
+themeColor = 'yellow' // ✅ Valid
 console.log(themeColor);
 
-// themeColor = 'orange'
+// themeColor = 'orange' // ❌ Error - 'orange' not in the union
 // console.log(themeColor);
 
-let isTrue:true
-isTrue = true
-// isTrue = false;
+// Boolean literal type - only accepts specific boolean value
+let isTrue: true // Only the value 'true' is allowed
+isTrue = true  // ✅ Valid
+// isTrue = false; // ❌ Error - only 'true' is allowed
 
-// tuple
-let myTuple : [number,string]
-myTuple = [10,'Narottam']
-const [age,name]= myTuple;
+// ========================================
+// TUPLES
+// ========================================
+// Tuples are arrays with fixed length and specific types for each position
+// Order and type of elements matter
+// Syntax: [Type1, Type2, Type3]
+
+let myTuple: [number, string] // First element must be number, second must be string
+myTuple = [10, 'Narottam'] // ✅ Correct order and types
+// myTuple = ['Narottam', 10] // ❌ Error - wrong order
+
+// Destructuring tuples maintains type information
+const [age, name] = myTuple; // age is number, name is string
 console.log(age);
+
+// ========================================
+// ENUMS
+// ========================================
+// Enums define a set of named constants
+// Useful for representing a collection of related values
+// Can be numeric or string enums
+
+enum WeatherConditions {
+  Sunny = 'sunny',   // String enum - explicitly set values
+  Cloudy = 'cloudy',
+  Rainy = 'rainy'
+}
+
+console.log(WeatherConditions.Cloudy); // Outputs: 'cloudy'
+
+// Benefits of enums:
+// 1. Better readability than magic strings/numbers
+// 2. IntelliSense support
+// 3. Compile-time checking
+// 4. Reverse mapping (for numeric enums)
