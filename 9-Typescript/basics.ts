@@ -133,8 +133,8 @@ console.log(printUser());
 
 // Custom object type with optional property
 type Person = {
-  name: string;    // Required property
-  age?: number;    // Optional property (? makes it optional)
+  name: string; // Required property
+  age?: number; // Optional property (? makes it optional)
 };
 
 function printPerson(person: Person) {
@@ -166,12 +166,12 @@ type User = UserInfo & AccountDetails;
 
 const narottam: User = {
   // Must have ALL properties from both types
-  fname: 'Narottam Sharma',
-  lname: "Sharma", 
+  fname: "Narottam Sharma",
+  lname: "Sharma",
   age: 22,
   email: "ban@gmail.com",
-  password: "aksnflkswan"
-}
+  password: "aksnflkswan",
+};
 console.log(`Name: ${narottam.lname}`);
 
 // ========================================
@@ -184,9 +184,9 @@ console.log(`Name: ${narottam.lname}`);
 let password: string | number = 22; // Can be either string OR number
 let User2: UserInfo | AccountDetails = {
   // Can be either UserInfo OR AccountDetails (not both)
-  fname: 'Narottam',
-  lname: 'Sharma',
-  age: 25
+  fname: "Narottam",
+  lname: "Sharma",
+  age: 25,
   // This object matches UserInfo structure
 };
 console.log(`Password: ${password}`);
@@ -206,16 +206,16 @@ num = 1; // ✅ Valid
 console.log(num);
 
 // String literal type - only accepts specific strings
-let themeColor: 'red' | 'yellow' | 'green'; // Only these exact strings
-themeColor = 'yellow' // ✅ Valid
+let themeColor: "red" | "yellow" | "green"; // Only these exact strings
+themeColor = "yellow"; // ✅ Valid
 console.log(themeColor);
 
 // themeColor = 'orange' // ❌ Error - 'orange' not in the union
 // console.log(themeColor);
 
 // Boolean literal type - only accepts specific boolean value
-let isTrue: true // Only the value 'true' is allowed
-isTrue = true  // ✅ Valid
+let isTrue: true; // Only the value 'true' is allowed
+isTrue = true; // ✅ Valid
 // isTrue = false; // ❌ Error - only 'true' is allowed
 
 // ========================================
@@ -225,8 +225,8 @@ isTrue = true  // ✅ Valid
 // Order and type of elements matter
 // Syntax: [Type1, Type2, Type3]
 
-let myTuple: [number, string] // First element must be number, second must be string
-myTuple = [10, 'Narottam'] // ✅ Correct order and types
+let myTuple: [number, string]; // First element must be number, second must be string
+myTuple = [10, "Narottam"]; // ✅ Correct order and types
 // myTuple = ['Narottam', 10] // ❌ Error - wrong order
 
 // Destructuring tuples maintains type information
@@ -241,9 +241,9 @@ console.log(age);
 // Can be numeric or string enums
 
 enum WeatherConditions {
-  Sunny = 'sunny',   // String enum - explicitly set values
-  Cloudy = 'cloudy',
-  Rainy = 'rainy'
+  Sunny = "sunny", // String enum - explicitly set values
+  Cloudy = "cloudy",
+  Rainy = "rainy",
 }
 
 console.log(WeatherConditions.Cloudy); // Outputs: 'cloudy'
