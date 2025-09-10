@@ -1,26 +1,64 @@
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <nav style={{ padding: '20px', borderBottom: '1px solid #ccc' }}>
-          <Link to='/' style={{ marginRight: '10px' }}>Home</Link>
-          <Link to='/blog' style={{ marginRight: '10px' }}>Blog</Link>
-          <Link to='/blog/1'>Blog1</Link>
-        </nav>
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: "20px" }}>
           <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/blog' element={<Blog/>} />
-            <Route path='/blog/1' element={<Blog1/>} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="blog/1" element={<Blog1 />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Route>
           </Routes>
         </div>
       </div>
     </BrowserRouter>
   );
 };
+function Layout() {
+  return (
+    <>
+      <header
+        style={{
+          padding: "20px",
+          borderBottom: "1px solid #ccc",
+          backgroundColor: "#f8f9fa",
+        }}
+      >
+        <nav>
+          <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+          <Link to="/blog" style={{ marginRight: "10px" }}>Blog</Link>
+          <Link to="/blog/1">Blog1</Link>
+        </nav>
+      </header>
 
-function Home(){
+      <main style={{ minHeight: "calc(100vh - 140px)", padding: "20px" }}>
+        <Outlet />
+      </main>
+
+      <footer
+        style={{
+          padding: "20px",
+          borderTop: "1px solid #ccc",
+          backgroundColor: "#f8f9fa",
+          textAlign: "center",
+        }}
+      >
+        <p>&copy; 2024 React Router App. All rights reserved.</p>
+      </footer>
+    </>
+  );
+}
+function Home() {
   return (
     <>
       <h1>Welcome to Home Page</h1>
@@ -29,18 +67,14 @@ function Home(){
   );
 }
 
-function Blog(){
-  return (
-    <>
-      This is My blog
-    </>
-  );
+function Blog() {
+  return <>This is My blog</>;
 }
 
-function Blog1(){
+function Blog1() {
   const navigate = useNavigate();
-  function redirect(){
-    navigate('/');
+  function redirect() {
+    navigate("/");
   }
   return (
     <>
@@ -50,5 +84,12 @@ function Blog1(){
     </>
   );
 }
-
+const ErrorPage = () => {
+  return (
+    <div>
+      <h1>404 - Page Not Found</h1>
+      <p>The page you are looking for does not exist.</p>
+    </div>
+  );
+};
 export default App;
