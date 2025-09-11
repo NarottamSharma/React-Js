@@ -6,6 +6,7 @@ import {
   useNavigate,
   Outlet,
 } from "react-router-dom";
+import UseRefDemo from "./components/UseRefDemo";
 const App = () => {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => {
               <Route index element={<Home />} />
               <Route path="blog" element={<Blog />} />
               <Route path="blog/1" element={<Blog1 />} />
+              <Route path="useref" element={<UseRefDemo />} />
               <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
@@ -37,7 +39,8 @@ function Layout() {
         <nav>
           <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
           <Link to="/blog" style={{ marginRight: "10px" }}>Blog</Link>
-          <Link to="/blog/1">Blog1</Link>
+          <Link to="/blog/1" style={{ marginRight: "10px" }}>Blog1</Link>
+          <Link to="/useref" style={{ marginRight: "10px" }}>useRef Demo</Link>
         </nav>
       </header>
 
