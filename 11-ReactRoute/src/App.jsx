@@ -53,7 +53,7 @@ function Layout() {
           textAlign: "center",
         }}
       >
-        <p>&copy; 2024 React Router App. All rights reserved.</p>
+        <p>&copy; 2025 React Router App. All rights reserved.</p>
       </footer>
     </>
   );
