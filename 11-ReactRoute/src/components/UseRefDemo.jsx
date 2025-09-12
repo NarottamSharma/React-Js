@@ -9,6 +9,7 @@ const UseRefDemo = () => {
   // 2. Ref for storing mutable values
   const renderCount = useRef(0);
   const previousValue = useRef('');
+  const secretCounter = useRef(0); // This won't cause re-renders
   
   // 3. State for demonstration
   const [inputValue, setInputValue] = useState('');
@@ -49,6 +50,7 @@ const UseRefDemo = () => {
         <p><strong>Component rendered:</strong> {renderCount.current} times</p>
         <p><strong>Previous input value:</strong> "{previousValue.current}"</p>
         <p><strong>Current input value:</strong> "{inputValue}"</p>
+        <p><strong>Secret counter:</strong> {secretCounter.current} (only updates on re-render)</p>
       </div>
 
       {/* Example 1: DOM Manipulation */}
@@ -95,21 +97,48 @@ const UseRefDemo = () => {
       <div style={{ marginBottom: '20px' }}>
         <h3>3. 📊 State vs Ref Comparison</h3>
         <p>Count (causes re-render): {count}</p>
-        <button 
-          onClick={() => setCount(count + 1)} 
-          style={{ marginRight: '5px', padding: '8px' }}
-        >
-          Increment State (+1)
-        </button>
-        <button 
-          onClick={() => {
-            renderCount.current = renderCount.current + 10;
-            alert(`Ref value: ${renderCount.current} (no re-render!)`);
-          }} 
-          style={{ padding: '8px' }}
-        >
-          Increment Ref (+10)
-        </button>
+        <p style={{ color: '#666' }}>
+          📝 Notice: The secret counter display only updates when the component re-renders!
+        </p>
+        
+        <div style={{ marginTop: '10px' }}>
+          <button 
+            onClick={() => setCount(count + 1)} 
+            style={{ marginRight: '5px', padding: '8px', backgroundColor: '#4CAF50', color: 'white', border: 'none' }}
+          >
+            Increment State (+1) - Triggers Re-render
+          </button>
+          
+          <button 
+            onClick={() => {
+              secretCounter.current = secretCounter.current + 10;
+              alert(`Secret counter is now: ${secretCounter.current}\n\nBut the display won't update until the component re-renders!\n\nThis is the key difference: useRef doesn't trigger re-renders.`);
+            }} 
+            style={{ marginRight: '5px', padding: '8px', backgroundColor: '#ff9800', color: 'white', border: 'none' }}
+          >
+            Increment Secret Ref (+10) - No Re-render
+          </button>
+          
+          <button 
+            onClick={() => {
+              console.log('Current secret counter value:', secretCounter.current);
+              alert(`Check console! Secret counter value: ${secretCounter.current}`);
+            }} 
+            style={{ padding: '8px', backgroundColor: '#2196F3', color: 'white', border: 'none' }}
+          >
+            Check Ref Value
+          </button>
+        </div>
+        
+        <div style={{ marginTop: '15px', padding: '10px', backgroundColor: '#fff3cd', borderRadius: '5px' }}>
+          <strong>🧪 Experiment:</strong>
+          <ol>
+            <li>Click "Increment Secret Ref (+10)" multiple times</li>
+            <li>Notice the display doesn't change (no re-render)</li>
+            <li>Then click "Increment State (+1)" once</li>
+            <li>Watch the secret counter display jump to its actual value!</li>
+          </ol>
+        </div>
       </div>
 
       {/* Key Points */}
