@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import type AdvForm from "./AdvForm";
 interface FormData {
   name: string;
   email: string;

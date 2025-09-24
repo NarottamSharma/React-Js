@@ -1,11 +1,16 @@
-import React from 'react'
-import Form from './components/Form'
+import { Suspense } from 'react'
+// import AdvForm from './components/AdvForm'
+import FetchTodo from './components/FetchTodo'
 
 const App = () => {
   return (
-    <div>
-      <Form/>
-    </div>
+    // <div>
+    //   {/* <Form/> */}
+    //   <AdvForm/>
+    // </div>
+    <Suspense fallback={<h2>Loading...</h2>}>
+      <FetchTodo />
+    </Suspense>
   )
 }
 
