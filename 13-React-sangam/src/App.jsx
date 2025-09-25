@@ -1,5 +1,5 @@
 // import './App.css'
-// import Profile from './components/profile'
+import Profile from './components/profile'
 // import Cart from './components/cart'
 import "./index.css";
 import { useEffect, useState } from "react";
@@ -74,8 +74,8 @@ function App() {
         }
       </div>
 
-      {/* <Profile/>
-      <Cart name={name} age={21} city='vizag' /> */}
+        <Profile/>
+      {/* <Cart name={name} age={21} city='vizag' />  */}
     </div>
   );
 }
