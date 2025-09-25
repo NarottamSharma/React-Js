@@ -1,5 +1,6 @@
 // import './App.css'
 import Profile from './components/profile'
+import Memo from './components/useMemo';
 // import Cart from './components/cart'
 import "./index.css";
 import { useEffect, useState } from "react";
@@ -75,6 +76,7 @@ function App() {
       </div>
 
         <Profile/>
+        <Memo/>
       {/* <Cart name={name} age={21} city='vizag' />  */}
     </div>
   );
